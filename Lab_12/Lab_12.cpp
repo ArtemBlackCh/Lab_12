@@ -6,43 +6,32 @@ using namespace std;
 
 int main()
 {
-	BiList A;
-	int N;
+	BiList A, B;
+	int inputA[] = { 1,3,5,7,9 };
+	int inputB[] = { 2,4,6,8,10 };
 
-	for ( int i = 0; i < 10; i++)
+	for (auto const& N : inputA)
 	{
-		cin >> N;
 		A.push_back(N);
 	}
-	A.forward_view();
-	
-	for ( int i = 0; i < A.size(); i++)
+
+	for (auto const& N : inputB)
 	{
-		if (A[i] % 2 == 0)
-		{
-			BiNode* temp = A.get(i);
-			A.insert(temp, A[i] - 1);
-			i++;
-		}
-		else
-		{
-			BiNode* temp = A.get(i);
-			A.insert(A[i] + 1, temp);
-			i++;
-		}
+		B.push_back(N);
 	}
 
+	cout << "A : ";
 	A.forward_view();
+	cout << "B : ";
+	B.forward_view();
 
-	for (int i = 0; i < A.size(); i++)
-	{
-		if (A[i] % 3 == 0)
-		{
-			BiNode* temp = A.get(i);
-			A.remove(temp);
-			i--;
-		}
-	}
+	int index;
+	cin >> index;
 
+	A.splice_in(B, index);
+
+	cout << "A : ";
 	A.forward_view();
+	cout << "B : ";
+	B.forward_view();
 }

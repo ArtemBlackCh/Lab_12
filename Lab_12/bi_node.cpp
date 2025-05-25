@@ -203,27 +203,24 @@ BiNode* BiNode::splice_in(BiNode* F1, BiNode* F2, int index)
     else
     {
         BiNode* nodeIndex = F1->get(F1, index);
+        BiNode* nodeNext = nodeIndex->next;
+        BiNode* F2Back = F2->get_back(F2);
 
-        if (nodeIndex)
+        if (nodeNext)
         {
-            BiNode* nodeNext = nodeIndex->next;
-            BiNode* F2Back = F2->get_back(F2);
+            nodeNext->prev = F2Back;
+            nodeIndex->next = F2;
 
-            if (nodeNext)
-            {
-                nodeNext->prev = F2Back;
-                nodeIndex->next = F2;
+            F2->prev = nodeIndex;
+            F2Back->next = nodeNext;
 
-                F2->prev = nodeIndex;
-                F2Back->next = nodeNext;
-
-            }
-            else
-            {
-                nodeIndex->next = F2;
-                F2->prev = nodeIndex;
-            }
         }
+        else
+        {
+            nodeIndex->next = F2;
+            F2->prev = nodeIndex;
+        }
+        
         return F1;
     }
 }

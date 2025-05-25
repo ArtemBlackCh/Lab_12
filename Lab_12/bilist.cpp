@@ -106,7 +106,7 @@ int& BiList::operator[](size_t index)
 
 void BiList::splice_in(BiList& List, int index)
 {
-	if (front && List.front)
+	if (front && List.front && List.front->get(front,index))
 	{
 		front = front->splice_in(front, List.front, index);
 		List.front = nullptr;
