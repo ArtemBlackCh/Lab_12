@@ -127,7 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bilist.cpp" />
+    <ClCompile Include="bi_node.cpp" />
     <ClCompile Include="Lab_12.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bilist.h" />
+    <ClInclude Include="bi_node.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
